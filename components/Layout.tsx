@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useStore } from '../store';
 import { UserRole } from '../types';
@@ -50,7 +49,7 @@ const Layout: React.FC<{ children: React.ReactNode, activeTab: string, setActive
         <div className="flex items-center gap-3">
           <Logo size="w-10 h-10" />
           <div className="flex flex-col">
-            <h1 className="text-[11px] font-extrabold text-black leading-none tracking-tight uppercase">C.B. Limited</h1>
+            <h1 className="text-[11px] font-extrabold text-black leading-none tracking-tight uppercase">Commercial Builders Ltd</h1>
             <h2 className="text-[8px] font-bold text-[#187444] uppercase tracking-[0.1em] mt-0.5">Construction Simplified</h2>
             <h3 className="text-[6px] font-bold text-[#F9C912] uppercase tracking-[0.1em]">Leave Management</h3>
           </div>
@@ -68,7 +67,7 @@ const Layout: React.FC<{ children: React.ReactNode, activeTab: string, setActive
         <div className="flex flex-col h-full">
           <div className="hidden md:flex flex-col items-center pt-10 pb-8 px-6 border-b border-gray-50">
             <Logo size="w-16 h-16 mb-4" />
-            <h1 className="text-sm font-extrabold text-black uppercase leading-none tracking-tight text-center mb-1.5">Commercial Builders</h1>
+            <h1 className="text-sm font-extrabold text-black uppercase leading-none tracking-tight text-center mb-1.5">Commercial Builders Ltd</h1>
             <p className="text-[9px] font-black text-[#187444] uppercase tracking-[0.3em] mb-1">Construction Simplified</p>
             <h2 className="text-[10px] font-bold text-[#F9C912] uppercase tracking-widest">Leave System</h2>
           </div>

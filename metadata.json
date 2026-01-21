@@ -1,6 +1,6 @@
 {
-  "name": "CBL Core | Unified Personnel & Leave Ecosystem",
-  "description": "Enterprise infrastructure for Commercial Builders Ltd, managing multi-node staff rosters with automated hierarchy enforcement.",
+  "name": "Commercial Builders Ltd | Leave Management System",
+  "description": "Enterprise infrastructure for Commercial Builders Ltd, managing multi-departmental leave rosters and operational attendance.",
   "requestFramePermissions": [
     "geolocation"
   ]
