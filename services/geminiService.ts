@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { LeaveRequest, User } from "../types";
 
@@ -8,6 +7,7 @@ export const getLeaveAdvisory = async (
   proposedEndDate: string,
   teamRequests: LeaveRequest[]
 ) => {
+  // Initialize right before call to ensure latest environment variables (crucial for Netlify)
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   // Only consider leaves in the same branch AND department for localized planning
