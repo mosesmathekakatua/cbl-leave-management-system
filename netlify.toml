@@ -1,5 +1,6 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
 
 [[headers]]
   for = "/*"
@@ -10,3 +11,8 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = "default-src 'self' https: 'unsafe-inline' 'unsafe-eval' blob: data:; img-src 'self' https: data: blob:; connect-src 'self' https: wss:;"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
