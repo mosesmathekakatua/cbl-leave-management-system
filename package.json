@@ -1,7 +1,7 @@
 {
   "name": "cbl-leave-manager",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "@google/genai": "^1.37.0",
+    "@supabase/supabase-js": "^2.48.1",
     "recharts": "^2.15.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.2"
