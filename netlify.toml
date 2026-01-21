@@ -12,14 +12,6 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = "default-src 'self' https: 'unsafe-inline' 'unsafe-eval' blob: data:; img-src 'self' https: data: blob:; connect-src 'self' https: wss:;"
 
-# Ensure function calls are NOT redirected to index.html
-# This MUST come before the catch-all /* rule
-[[redirects]]
-  from = "/.netlify/functions/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-# Catch-all for SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
