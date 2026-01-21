@@ -1,0 +1,7 @@
+{
+  "name": "CBL Core | Unified Personnel & Leave Ecosystem",
+  "description": "Enterprise infrastructure for Commercial Builders Ltd, managing multi-node staff rosters with automated hierarchy enforcement.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

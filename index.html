@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commercial Builders Limited | Leave Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand-green: #187444;
+        --brand-yellow: #F9C912;
+        --brand-gold: #D5C744;
+        --brand-bg: #EAE8DA;
+        --brand-text: #000000;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--brand-bg);
+        color: var(--brand-text);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Custom Input Styling */
+      input, select, textarea {
+        background-color: #ffffff !important;
+        border: 1.5px solid #d1d5db !important;
+        color: var(--brand-text) !important;
+        border-radius: 1rem !important;
+        padding: 0.875rem 1.25rem !important;
+        font-size: 0.9375rem !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      input:focus, select:focus, textarea:focus {
+        border-color: var(--brand-green) !important;
+        box-shadow: 0 0 0 4px rgba(24, 116, 68, 0.1) !important;
+        outline: none;
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--brand-green); }
+
+      /* Animation Utilities */
+      .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Safaricom Pill Tabs */
+      .tab-active {
+        background-color: var(--brand-green);
+        color: white !important;
+        box-shadow: 0 10px 15px -3px rgba(24, 116, 68, 0.2);
+      }
+      
+      /* Card Styling */
+      .cbl-card {
+        background: #ffffff;
+        border-radius: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0,0,0,0.03);
+      }
+
+      /* Table Styles */
+      table thead th {
+        background-color: #f8fafc;
+        color: #64748b;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.65rem;
+        padding: 1rem 1.5rem;
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "recharts": "https://esm.sh/recharts@^3.6.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
