@@ -14,7 +14,7 @@ import Logo from './components/Logo';
 import ProfileSettings from './views/ProfileSettings';
 
 const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({ onRegister, onForgot }) => {
-  const { dispatch } = useStore();
+  const { state, dispatch } = useStore();
   const [name, setName] = useState('');
   const [pin, setPin] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +25,21 @@ const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({
     setIsLoggingIn(true);
     setError(null);
 
+    // Helper to attempt a local login if cloud fails
+    const attemptLocalFallback = () => {
+      const localUser = state.users.find(u => 
+        u.name.toLowerCase().trim() === name.toLowerCase().trim() && 
+        u.pin === pin
+      );
+      
+      if (localUser) {
+        console.info("Authenticated via local fallback.");
+        dispatch({ type: 'LOGIN', user: localUser });
+      } else {
+        setError("Invalid Credentials. Please check your registry name and PIN.");
+      }
+    };
+
     try {
       const res = await fetch('/.netlify/functions/api/auth/verify', {
         method: 'POST',
@@ -34,7 +49,6 @@ const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({
 
       if (res.ok) {
         const user = await res.json();
-        // Map back to camelCase
         const mappedUser = {
           ...user,
           isApproved: user.is_approved,
@@ -45,11 +59,16 @@ const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({
           mustChangePin: user.must_change_pin
         };
         dispatch({ type: 'LOGIN', user: mappedUser });
+      } else if (res.status === 404) {
+        // Function not found (common in local preview) - fallback to local users
+        console.warn("Auth API returned 404. Using local fallback.");
+        attemptLocalFallback();
       } else {
-        setError("Invalid Credentials or Unauthorized Access.");
+        setError("Unauthorized Access. Registry records mismatch.");
       }
     } catch (err) {
-      setError("Network error. Check your connection.");
+      console.warn("Network error during auth. Using local fallback.");
+      attemptLocalFallback();
     } finally {
       setIsLoggingIn(false);
     }
@@ -80,7 +99,7 @@ const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({
               disabled={isLoggingIn}
               className="w-full py-4 bg-[#187444] text-white font-black rounded-2xl uppercase shadow-xl transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
             >
-              {isLoggingIn ? 'Establishing Secure Link...' : 'Verify & Enter'}
+              {isLoggingIn ? 'Verifying Integrity...' : 'Verify & Enter'}
             </button>
             {error && <p className="text-[10px] font-black text-rose-600 uppercase text-center mt-4">{error}</p>}
           </form>
@@ -96,7 +115,6 @@ const LoginView: React.FC<{ onRegister: () => void, onForgot: () => void }> = ({
   );
 };
 
-// Implement missing RegistrationView component
 const RegistrationView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const { dispatch } = useStore();
   const [formData, setFormData] = useState({ name: '', pin: '', branch: Branch.GODOWN_HQ, dept: Department.IT });
