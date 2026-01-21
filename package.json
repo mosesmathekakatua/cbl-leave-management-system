@@ -12,6 +12,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "@google/genai": "^1.37.0",
+    "@supabase/supabase-js": "^2.45.0",
     "recharts": "^2.15.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.2"
